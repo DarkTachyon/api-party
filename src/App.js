@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Route, Switch, NavLink } from 'react-router-dom'
 import Github from './Github'

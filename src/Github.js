@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 
 import './Github.css'
 
 class Github extends Component {
-    constructor() {
+    /*constructor() {
         super()
-    }
+    }*/
 
     state = {
         username: ''
@@ -13,6 +14,12 @@ class Github extends Component {
 
     handleChange = (ev) => {
         this.setState({ username: ev.target.value })
+    }
+
+    handleSubmit = (ev) => {
+        ev.preventDefault()
+        this.props.history.push(`/github/${this.state.username}`)
+        this.setState({ username: '' })
     }
 
     render() {
@@ -23,7 +30,7 @@ class Github extends Component {
                     src="http://www.aha.io/assets/github.7433692cabbfa132f34adb034e7909fa.png"
                     alt="github logo"
                 />
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <div>
                         <input
                             type="text"
@@ -37,6 +44,8 @@ class Github extends Component {
                         </button>
                     </div>
                 </form>
+                <Route path="/github/:username" render={(props) => <h3>You searched for {props.match.params.username} </h3>} />
+                <Route exact path="/github" render={() => <h3>Please enter a username to search on Github.</h3>} />
             </div>
         )
     }
