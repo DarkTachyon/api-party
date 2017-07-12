@@ -8,7 +8,11 @@ class MarvelChar extends Component {
         super(props)
 
         this.state = {
-            info: {},
+            info: {
+                data: {
+                    results: []
+                },
+            },
         }
 
         this.fetchCharData()
@@ -18,6 +22,7 @@ class MarvelChar extends Component {
         fetch(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${this.props.match.params.nameStartsWith}&ts=${timestamp}&apikey=${pubKey}&hash=${hash}`)
             .then(response => response.json())
             .then(info => this.setState({ info }))
+
     }
 
     componentWillReceiveProps(nextProps) {
@@ -43,16 +48,14 @@ class MarvelChar extends Component {
                     info.data.results.map((character) => {
                         const path = `${character.thumbnail.path}.${character.thumbnail.extension}`
                         const tempClassName = `character ${character.id}`;
-                        <div className={tempClassName}>
+                        return (<div className={tempClassName}>
                             <img src={path} alt={character.name} />
                             <h2>Name: {character.name}</h2>
                             <h3>Marvel Character ID: {character.id}</h3>
                             <h3>List of comics:</h3>
                             <ul>
                             {
-                                character.comics.items.map((comic) => {
-                                    <li>{comic.name}</li>
-                                })
+                                character.comics.items.map((comic) => <li>{comic.name}</li>)
                             }
                             </ul>
                             <h3>URLs</h3>
@@ -65,7 +68,7 @@ class MarvelChar extends Component {
                                 })
                             }
                             </ul>
-                        </div>
+                        </div>)
                     })
                 }*/
                 {info.attributionHTML}
