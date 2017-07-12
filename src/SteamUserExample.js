@@ -47,17 +47,17 @@ class SteamUser extends Component {
                     ],
                 },
             },
-            key: 'Your Steam Api Key'
         }
+        key: 'Your Steam Api Key'
 
         this.fetchUserData()
     }
 
     fetchUserData = () => {
-        fetch(`http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${this.state.key}&steamids=${this.props.match.params.id}`)
+        fetch(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${this.state.key}&steamids=${this.props.match.params.id}`)
             .then(response => response.json())
             .then(results => this.setState({ results }))
-        fetch(`http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${this.state.key}&steamid=${this.props.match.params.id}&format=json`)
+        fetch(`https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${this.state.key}&steamid=${this.props.match.params.id}&format=json`)
             .then(response => response.json())
             .then(results2 => this.setState({ results2 }))
     }
