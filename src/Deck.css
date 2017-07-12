@@ -1,0 +1,17 @@
+.deck {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.deck button {
+    color: white;
+    margin-top: 10px;
+    width: 15%;
+    padding: 10px;
+    font-size: 24px;
+    border-radius: 5px;
+    border: 1px solid #01638f;
+    margin-bottom: 50px;
+    background-color: #0184be;
+    font-family: "Gentium Book Basic", serif;
+}
