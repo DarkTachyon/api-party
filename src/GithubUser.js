@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import './Github.css'
+import './GithubUser.css'
 
 class GithubUser extends Component {
     constructor(props) {
