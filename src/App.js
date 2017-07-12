@@ -5,6 +5,7 @@ import Github from './Github'
 import Xbox from './Xbox'
 import Steam from './Steam'
 import Deck from './Deck'
+import Marvel from './Marvel'
 
 class App extends Component {
   render() {
@@ -28,6 +29,9 @@ class App extends Component {
             <li>
                 <NavLink to="/deck">Deck API</NavLink>
             </li>
+            <li>
+                <NavLink to="/marvel">Marvel API</NavLink>
+            </li>
           </ul>
         </div>
         <Switch>
@@ -35,6 +39,7 @@ class App extends Component {
             <Route path="/xbox" component={Xbox} />
             <Route path="/steam" component={Steam} />
             <Route path="/deck" component={Deck} />
+            <Route path="/marvel" component={Marvel} />
             <Route render={() => <p>To get started, click one of the links above</p>} />
         </Switch>
       </div>
