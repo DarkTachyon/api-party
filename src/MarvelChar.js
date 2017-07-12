@@ -44,7 +44,7 @@ class MarvelChar extends Component {
         // console.log(this.state.info.data.results)
         return (
             <div className="marvel-info">
-                /*{
+                {
                     info.data.results.map((character) => {
                         const path = `${character.thumbnail.path}.${character.thumbnail.extension}`
                         const tempClassName = `character ${character.id}`;
@@ -55,23 +55,23 @@ class MarvelChar extends Component {
                             <h3>List of comics:</h3>
                             <ul>
                             {
-                                character.comics.items.map((comic) => <li>{comic.name}</li>)
+                                character.comics.items.map((comic) => <p>{comic.name}</p>)
                             }
                             </ul>
                             <h3>URLs</h3>
                             <ul>
                             {
                                 character.urls.map((item) => {
-                                    <li>
-                                        <a href={item.url} target="_">{ item.type })}</a>
-                                    </li>
+                                    return <p>
+                                        <a href={item.url} target="_">{ this.capitalize( item.type ) }</a>
+                                    </p>
                                 })
                             }
                             </ul>
                         </div>)
                     })
-                }*/
-                {info.attributionHTML}
+                }
+                <a href="http://marvel.com" target="_">{info.attributionText}</a>
             </div>
         )
     }

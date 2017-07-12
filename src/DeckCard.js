@@ -7,7 +7,23 @@ class DeckCard extends Component {
         super(props)
 
         this.state = {
-            card: {}
+            card: {
+                success: false,
+                cards: [
+                    {
+                        image: '',
+                        images: {
+                            png: '',
+                            svg: ''
+                        },
+                        value: '',
+                        suit: '',
+                        code: ''
+                    },
+                ],
+                deck_id:'',
+                remaining: 0
+            }
         }
 
         this.fetchData()
@@ -15,7 +31,7 @@ class DeckCard extends Component {
     }
 
     fetchData = () => {
-        fetch(`https://deckofcardsapi.com/api/deck/${this.props.match.deck.deck_id}/draw/?count=1`)
+        fetch(`https://deckofcardsapi.com/api/deck/${this.props.match.params.deck_id}/draw/?count=1`)
             .then(response => response.json())
             .then(card => this.setState({ card }))
     }
@@ -23,12 +39,12 @@ class DeckCard extends Component {
     componentWillReceiveProps(nextProps) {
         const locationChanged = nextProps.location !== this.props.location
         if (locationChanged) {
-            this.fetchUserData()
+            this.fetchData()
         }
     }
 
     render() {
-        const cardTemp = this.state.cards[0]
+        const cardTemp = this.state.card.cards[0]
         const cardAlt = `${cardTemp.value} of ${cardTemp.suit}`
         return (
             <div className="deck-user">

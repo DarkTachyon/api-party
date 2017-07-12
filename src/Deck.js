@@ -9,7 +9,12 @@ class Deck extends Component {
         super()
 
         this.state = {
-            deck: {}
+            deck: {
+                success: false,
+                deck_id: '',
+                shuffled: false,
+                remaining: 0
+            },
         }
 
         this.getDeck()
@@ -24,7 +29,12 @@ class Deck extends Component {
     handleSubmit = (ev) => {
         ev.preventDefault()
         this.props.history.push(`/deck/${this.state.deck.deck_id}`)
-        this.setState({ deck: {} })
+        this.setState({ deck: {
+            success: false,
+            deck_id: '',
+            shuffled: false,
+            remaining: 0
+        } })
     }
 
     render() {
@@ -41,7 +51,7 @@ class Deck extends Component {
                 >
                     Draw Card
                 </button>
-                <Route path="/deck/:{this.state.deck.deck_id}" component={DeckCard} />
+                <Route path="/deck/:deck_id" component={DeckCard} />
             </div>
         )
     }
